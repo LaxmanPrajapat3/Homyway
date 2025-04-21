@@ -1,0 +1,79 @@
+<% layout('layouts/boilerplate')-%>
+
+
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+
+            <h3>Create new Posts</h3>
+            <form action="/posts/add" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+
+                <div class="mb-3">
+
+                    <lable for="title" class="form-label">Title</lable>
+                    <input type="text" placeholder="Enter Title" name="posting[title]" class="form-control" required>
+                    <!-- If User entered title is valid than this valid-feedback div work "Title looks good!" -->
+<div class="valid-feedback">Title looks good!</div>
+<!-- if user entered tittle is not valid this invalid-feedback div is worked -->
+<div class="invalid-feedback">Title should be valid!</div>
+
+              
+
+                <div class="mb-3">
+
+                    <lable for="description" class="form-label">Description</lable>
+
+                    <textarea name="posting[description]" placeholder="Enter Description" class="form-control"
+                        required></textarea>
+                        <div class="invalid-feedback">Description should be valid!</div>
+
+                    </div>
+
+              
+
+                <div class="mb-3">
+                    <lable for="image_url" class="form-label">Upload Image</lable>
+
+
+                    <input type="file"  name="posting[image_url]" class="form-control" required>
+                
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="price" class="form-label">Price</label>
+                        <input  placeholder="Enter Price" name="posting[price]" class="form-control" required>
+                        <div class="invalid-feedback">Price should be valid!</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="country" class="form-label">Country</label>
+                        <input name="posting[country]" placeholder="Which Country" type="text" class="form-control" required >
+                    <div class="invalid-feedback">Country should be valid!</div>
+
+                    </div>
+                </div>
+   
+
+
+
+
+
+
+
+                <div class="mb-3">
+                    <lable for="location" class="form-label">Location</lable>
+
+                    <input name="posting[location]" placeholder="Which location" type="text" class="form-control" required>
+                    <div class="invalid-feedback">Location should be valid!</div>
+
+                </div>
+                <br><br>
+                <button class="btn btn-dark add-btn">Submit</button>
+                <br><br>
+
+        </div>
+
+    </div>
+    </form>

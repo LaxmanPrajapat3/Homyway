@@ -1,0 +1,41 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+
+<div class="row mt-3">
+    <div class="col-6 offset-3">
+        <h2 class="col-10 offset-3">Login on HomyWay</h2>
+    
+    
+    <form action="/login" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+    
+            <lable for="username" class="form-label">Username</lable>
+            <input
+             type="text"
+              name="username" 
+              class="form-control"
+               required
+               />
+            <!-- If User entered title is valid than this valid-feedback div work "Title looks good!" -->
+   
+    </div>
+    
+  
+    
+    <div class="mb-3">
+    
+        <lable for="password" class="form-label">Password</lable>
+        <input
+         type="password"
+          name="password" 
+          class="form-control"
+           required
+           />
+    </div>
+    <button class="btn btn-success">Login</button>
+    
+    </form>
+    
+    </div>
+    
+    </div>

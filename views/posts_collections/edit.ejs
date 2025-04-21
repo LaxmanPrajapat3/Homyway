@@ -1,0 +1,95 @@
+<% layout('layouts/boilerplate')-%>
+<div class="row mt-3" >
+    <div class="col-8 offset-2">
+
+
+
+
+
+
+
+
+        <h3>Edit your posts</h3>
+
+        <form action="/posts/<%=editablepost._id %>?_method=put" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+            <div class="mb-3">
+    
+                <lable for="title" class="form-label">Title</lable>
+                
+                <input type="text" placeholder="Enter Title" name="posting[title]" value="<%=editablepost.title %>" class="form-control" required>
+                 <!-- If User entered title is valid than this valid-feedback div work "Title looks good!" -->
+<div class="valid-feedback">Title looks good!</div>
+<!-- if user entered tittle is not valid this invalid-feedback div is worked -->
+<div class="invalid-feedback">Title should be valid!</div>
+
+            </div>
+            <div class="mb-3">
+    
+                <lable for="description" class="form-label">Description</lable>
+                
+                <textarea name="posting[description]" class="form-control" required > <%=editablepost.description%>       
+                
+                </textarea >
+                    <div class="invalid-feedback">Description should be valid!</div>
+            </div>
+            <div class="mb-3">
+                Original Post Image
+    <img src="<%=originalImageUrl%>" alt="somthing wrong" >
+    </div>
+            <div class="mb-3">
+    
+                <lable for="image_url" class="form-label">Upload New Image</lable>
+                
+                <input type="file"
+                 name="posting[image_url]" 
+                  class="form-control" 
+                  >
+
+
+                <div class="invalid-feedback">imge URL should be valid!</div>
+            </div>   
+            
+    <div class="row">
+        <div class="mb-3 col-md-4">
+    
+            <lable for="price" class="form-label">Price</lable>
+            
+            <input type="text" value="<%=editablepost.price %>" type="number" name="posting[price]"  class="form-control" required>
+            <div class="invalid-feedback">Price should be valid!</div>
+        </div>
+
+
+        <div class="mb-3 col-md-8">
+
+            <lable for="country" class="form-label">Country</lable>
+            
+            <input name="posting[country]" value="<%=editablepost.country%>" type="text"  class="form-control" required>
+            <div class="invalid-feedback">Country should be valid!</div>
+
+        </div>
+
+    </div>
+
+            
+            <div class="mb-3">
+    
+                <lable for="location" class="form-label">Location</lable>
+                
+                <input name="posting[location]" value="<%=editablepost.location %>" type="text"  class="form-control" required>
+                <div class="invalid-feedback">Location should be valid!</div>
+            </div>
+            
+            
+            <button class="btn btn-dark edit-btn mb-3">Edit</button>
+                </form>
+
+
+
+
+
+
+    </div>
+</div>    
+
+
+            
