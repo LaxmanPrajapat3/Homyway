@@ -104,9 +104,10 @@
         <hr>
       <%  }   %>
 
-        <p><b>All Review</b></p>
-        <div class="row">
-<% for(review of showpost.reviews){ %>
+      <% if(showpost.reviews.length >0){ %>
+      <p><b>All Review</b></p>
+      <div class="row">
+          <% for(review of showpost.reviews){ %>
     <div class="card col-5 ms-3 mb-3">
 
     <div class="card-body">
@@ -124,9 +125,20 @@
 
 <%  }   %>
 
+
         </div>
+     <% } %>
+       
 
     </div>
+    <div class="col-8 offset-3 mb-3" style="background-color: lightgray;">
+            
+        <h3>Where you'll be</h3>
+        
+<iframe src="https://api.maptiler.com/maps/basic-v2/?key=<%=process.env.MAP_API_KEY%>#7/<%=lat %>/<%=lng%>" 0rameborder="200" width="100%" ></iframe>
+
+         
+        </div>
 </div>
 
-    
+

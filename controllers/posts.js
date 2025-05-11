@@ -1,8 +1,11 @@
+const { json } = require("express");
 const post=require("../models/post_model.js");
+const { layout } = require("ejs-mate");
 
 module.exports.index=async (req, res) => {
     const allposts = await post.find({});
     res.render("./posts_collections/index.ejs", { allposts });
+    console.log(`threse are posts : ${allposts}`);
 
 
 };
@@ -10,12 +13,36 @@ module.exports.showPost=async (req, res) => {
     let { id } = req.params;
     const showpost = await post.findById(id).populate(
         { path: "reviews", populate: { path: "author" }, }).populate("owner");
-    if (!showpost) {
-        req.flash("error", "Post Does not exist ");
-        res.redirect("/posts");
-    }
-    console.log(showpost);
-    res.render("./posts_collections/show.ejs", { showpost });
+        if (!showpost) {
+            req.flash("error", "Post Does not exist ");
+            res.redirect("/posts");
+        }
+        const url=`https://api.opencagedata.com/geocode/v1/json?q=${showpost.location}&limit=1&key=${process.env.OPENCAGE_GEOCODING_API_KEY}`
+    console.log(showpost.location);
+
+ const fetchRes= await fetch(url);
+ 
+ 
+
+ const data=await fetchRes.json();
+ console.log("This is data conversion --> ",data);
+ 
+
+  
+        if(data.results.length){
+
+        
+        const {lat,lng}=data.results[0].geometry;
+    
+        console.log(lat," ",lng);
+    res.render("./posts_collections/show.ejs", { showpost,lat,lng });
+
+}else{
+   
+const lat=50,lng=56;
+    res.render("./posts_collections/show.ejs", { showpost,lat,lng });
+
+}
 };
 
 module.exports.renderNewform=(req, res) => {
